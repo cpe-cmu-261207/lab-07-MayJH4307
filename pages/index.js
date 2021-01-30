@@ -1,9 +1,17 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import axios from 'axios'
-const baseURL = 'https://dummyapi.io/data/api'
+import Link from 'next/link'
+const baseURL = 'https://dummyapi.io/data/api/user'
+
 const Home = () => {
+
   return (
+    <>
       <h1>This is home page</h1>
+      <Link href="post">
+          <button>Goto post page</button>
+      </Link>
+    </>
   )
 }
 
