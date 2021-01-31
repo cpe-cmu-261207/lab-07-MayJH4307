@@ -2,7 +2,7 @@ import {useRouter} from "next/router";
 import {useEffect,useState} from 'react'
 import axios from 'axios'
 import Link from 'next/link'
-const baseURL = 'https://dummyapi.io/data/api/user'
+const baseURL = 'https://dummyapi.io/data/api'
 
 const Post = () => {
     const router = useRouter()
@@ -13,26 +13,53 @@ const Post = () => {
     const fetch = async () => {
         if(postId){
             const response = await axios.get(
-            baseURL,
+                `${baseURL}/post/${postId}`,
             {
               headers: {
                  'app-id' : '60155b1129a32e0319672e4a'
               }  
         })
-        setPost(response.data.data)
+        console.log(response.data)
+        setPost(response.data)
         }
     } 
     useEffect(fetch,[postId])
+
+    useEffect (() => {
+        const fetch = async () => {
+          const response = await axios.get(
+            `${baseURL}/post/${postId}/comment` ,
+            {
+              headers: {
+                 'app-id': '60155b1129a32e0319672e4a'
+              }  
+            })
+          
+          console.log(response.data)
+          setComment(response.data.data)
+        }
+        fetch()
+      },[])
+
 
     return (
         <>
             <h1>display post data from api here</h1>
             {post !== null ? (
-                <div>
-                <p>post : {post.text}</p>
-                <img src={post.picture}/>
+                <div style={{margin: '20px',padding: '0px'}}>
+                <p>tags : {post.tags }</p>
+                <img src={post.image} width='250px'/>
+                <p>{post.owner.firstName} {post.owner.lastName}</p>
                 <p>Likes : {post.likes}</p>
-              </div>
+                <p><strong>Comments</strong></p>
+                {
+                    comment.map( item => (
+                        <p>
+                            {item.owner.firstName} {item.owner.lastName} : {item.message}
+                        </p>
+                    ))
+                }
+                </div>
             ):null}
             <Link href="/post">
                 Back

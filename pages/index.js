@@ -11,6 +11,15 @@ const Home = () => {
       <Link href="post">
           <button>Goto post page</button>
       </Link>
+      <Link href="/Portfolio">
+          <button>Porfolio</button>
+      </Link>
+      <Link href="/CalGPA">
+          <button>Calculate GPA</button>
+      </Link>
+      <Link href="/port">
+          <button>port</button>
+      </Link>
     </>
   )
 }
