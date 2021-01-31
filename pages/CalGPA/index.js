@@ -2,7 +2,7 @@ import { createContext, useEffect, useReducer } from "react";
 import CourseCard from "./components/CourseCard";
 import CourseForm from "./components/CourseForm";
 import { useContext, useState } from "react";
-
+import Link from 'next/link'
 export const sample = createContext()
 
 function App() {
@@ -105,8 +105,10 @@ function App() {
       {/* TODO add course input form */}
       {/* TODO display calculated GPA */}
       <p id="gpa">GPA : {GPA}</p>
+      <a href="/"><button>Back</button> </a>
     </div>
   </sample.Provider>
+  
   );
 }
 

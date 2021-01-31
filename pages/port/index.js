@@ -4,7 +4,7 @@ const port = () => {
 
     return (
       <>
-        <h1>This is Port</h1>
+        <h1>This is my Portfolio</h1>
         <Link href="/port/homepage">
             <button>Goto Homepage</button>
         </Link>
